@@ -3,113 +3,96 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 80px;
   z-index: 1000;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.scrolled {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  transition: var(--transition-smooth);
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0 var(--space-lg);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  text-decoration: none;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
   color: var(--text-primary);
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.logo span {
-  color: var(--accent-color);
+  gap: var(--space-xs);
 }
 
 .nav {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  gap: var(--space-lg);
 }
 
 .nav a {
   text-decoration: none;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
+  transition: var(--transition-smooth);
   font-size: 0.95rem;
-  transition: color 0.2s ease;
 }
 
 .nav a:hover {
-  color: var(--accent-color);
-}
-
-.ctaLink {
-  background: var(--accent-color);
-  color: #ffffff !important;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  font-weight: 600 !important;
-  transition: background 0.2s ease !important;
-}
-
-.ctaLink:hover {
-  background: var(--accent-color-hover);
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-glow);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
-.actionBtn {
+.badgeBtn {
   background: transparent;
   border: none;
-  font-size: 1.3rem;
+  color: var(--text-primary);
+  font-size: 1.1rem;
   cursor: pointer;
   position: relative;
+  padding: var(--space-xs);
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-  padding: 0.25rem;
-  transition: transform 0.2s ease;
+  transition: var(--transition-smooth);
 }
 
-.actionBtn:hover {
+.badgeBtn:hover {
   transform: scale(1.1);
+  color: var(--accent-primary);
 }
 
 .badge {
   position: absolute;
   top: -5px;
   right: -8px;
-  background: var(--accent-color);
+  background: var(--accent-primary);
   color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.15rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
   border-radius: 10px;
+  padding: 2px 6px;
   min-width: 18px;
   text-align: center;
+  box-shadow: 0 0 8px var(--accent-primary-glow);
 }
 
 @media (max-width: 768px) {
   .nav {
-    display: none; /* Simple mobile display: navigation items hidden */
+    display: none; /* simple responsive approach */
   }
 }

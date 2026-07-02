@@ -1,24 +1,59 @@
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7f9fa;
-  --text-primary: #111111;
-  --text-secondary: #4a5568;
-  --accent-color: #ff5a36;
-  --accent-color-hover: #e04b2a;
-  --border-color: #e2e8f0;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  --font-sans: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Color Palette - Dark Mode (Primary Focus) */
+  --bg-primary: #040711;
+  --bg-secondary: #0a0e1c;
+  --bg-tertiary: #12182b;
+  --accent-primary: #ff5a36;
+  --accent-primary-glow: rgba(255, 90, 54, 0.4);
+  --accent-secondary: #ffae19;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  /* Typography Heights & Hierarchy */
+  --font-sans: var(--font-outfit), -apple-system, sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --fs-h1: 3.5rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.15rem;
+  --fs-body: 1rem;
+  --fs-small: 0.85rem;
+  --fs-xs: 0.75rem;
+
+  /* Spacing Grid Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-xxl: 5rem;
+
+  /* Effects & Shadows */
+  --glass-blur: blur(16px);
+  --glass-bg: rgba(10, 14, 28, 0.65);
+  --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --shadow-neon-glow: 0 0 20px var(--accent-primary-glow);
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-theme='dark'] {
-  --bg-primary: #0b0f19;
-  --bg-secondary: #121824;
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --accent-color: #ff6c4a;
-  --accent-color-hover: #ff7e60;
-  --border-color: #1f2937;
-  --card-bg: rgba(18, 24, 36, 0.8);
-  --shadow-color: rgba(0, 0, 0, 0.3);
+[data-theme='light'] {
+  /* Color Palette - Light Mode Fallback */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --accent-primary: #ff4f26;
+  --accent-primary-glow: rgba(255, 79, 38, 0.2);
+  --accent-secondary: #eab308;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --shadow-premium: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
 }

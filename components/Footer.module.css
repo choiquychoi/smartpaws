@@ -1,9 +1,9 @@
 .footer {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   border-top: 1px solid var(--border-color);
-  padding: 4rem 2rem 2rem;
-  font-size: 0.95rem;
+  padding: var(--space-xxl) var(--space-lg) var(--space-xl);
+  font-size: var(--fs-small);
 }
 
 .container {
@@ -15,13 +15,14 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-xl);
 }
 
 .brand h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-md);
   color: var(--text-primary);
+  font-weight: var(--fw-bold);
 }
 
 .brand p {
@@ -37,19 +38,21 @@
 }
 
 .links h4, .contact h4 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
 }
 
 .links a {
   text-decoration: none;
   color: var(--text-secondary);
-  transition: color 0.2s ease;
+  transition: var(--transition-smooth);
 }
 
 .links a:hover {
-  color: var(--accent-color);
+  color: var(--accent-primary);
+  text-shadow: 0 0 8px var(--accent-primary-glow);
 }
 
 .contact p {
@@ -60,21 +63,20 @@
 .divider {
   height: 1px;
   background: var(--border-color);
-  margin: 2rem 0;
+  margin: var(--space-lg) 0;
 }
 
 .bottom {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  gap: var(--space-md);
 }
 
 .copyright {
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
-
-
 
 @media (max-width: 768px) {
   .top {

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import SpecsTable from '@/components/SpecsTable';
 import Accordion from '@/components/Accordion';
 import LeadForm from '@/components/LeadForm';
-import DevConsole from '@/components/DevConsole';
 import Chatbot from '@/components/Chatbot';
 import CartDrawer from '@/components/CartDrawer';
 import { useApp } from '@/components/AppContext';
@@ -12,7 +11,6 @@ import styles from './page.module.css';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 });
-  const [logs, setLogs] = useState([]);
   
   const { 
     cart, 
@@ -26,8 +24,7 @@ export default function Home() {
   } = useApp();
 
   const addLog = (type, message) => {
-    const time = new Date().toLocaleTimeString('vi-VN');
-    setLogs(prev => [{ time, type, message }, ...prev].slice(0, 50));
+    console.log(`[${type.toUpperCase()}] ${message}`);
   };
 
   useEffect(() => {
@@ -150,8 +147,8 @@ export default function Home() {
                 Trợ lý dinh dưỡng thông minh 24/7 cho thú cưng của bạn. Tự động hóa bữa ăn chuẩn khoa học, giám sát từ xa qua camera AI 1080p và bảo vệ hạt luôn tươi ngon giòn rụm.
               </p>
               <div className={styles.heroActions}>
-                <a href="#register" className={styles.primaryBtn} onClick={() => addLog('click', 'Người dùng click CTA Đăng ký ở Hero')}>Nhận Ưu Đãi 35%</a>
-                <a href="#features" className={styles.secondaryBtn} onClick={() => addLog('click', 'Người dùng click Xem Tính năng ở Hero')}>Khám phá tính năng</a>
+                <a href="#register" className="neon-button-primary" onClick={() => addLog('click', 'Người dùng click CTA Đăng ký ở Hero')}>Nhận Ưu Đãi 35%</a>
+                <a href="#features" className="neon-button-secondary" onClick={() => addLog('click', 'Người dùng click Xem Tính năng ở Hero')}>Khám phá tính năng</a>
               </div>
             </div>
             <div className={styles.heroImageContainer}>
@@ -173,7 +170,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.partners}>
             <div className={styles.partner}>🩺 VetApproved</div>
-            <div className={styles.partner}>🐈 Helipet Blog</div>
+            <div className={styles.partner}>🐈 PetCare Blog</div>
             <div className={styles.partner}>🐕 PetTech Association</div>
             <div className={styles.partner}>⭐️ PetCare Magazine</div>
           </div>
@@ -203,22 +200,22 @@ export default function Home() {
           </p>
 
           <div className={styles.bentoGrid}>
-            <div className={`${styles.bentoCard} ${styles.card1}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Camera AI')}>
+            <div className={`${styles.bentoCard} glass-card ${styles.card1}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Camera AI')}>
               <div className={styles.cardIcon}>📷</div>
               <h3>Camera AI & Giám sát từ xa 1080p</h3>
               <p>Giám sát trực tiếp quá trình ăn uống của thú cưng qua điện thoại. AI thông minh tự động nhận diện khuôn mặt từng bé mèo, ghi lại nhật ký dinh dưỡng cụ thể.</p>
             </div>
-            <div className={`${styles.bentoCard} ${styles.card2}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Cân định lượng')}>
+            <div className={`${styles.bentoCard} glass-card ${styles.card2}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Cân định lượng')}>
               <div className={styles.cardIcon}>⚖️</div>
               <h3>Cân điện tử định lượng</h3>
               <p>Cảm biến trọng lượng dưới khay ăn đo lường chính xác đến từng gram thức ăn thừa, tránh gây thừa cân hay béo phì.</p>
             </div>
-            <div className={`${styles.bentoCard} ${styles.card3}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Khóa ẩm')}>
+            <div className={`${styles.bentoCard} glass-card ${styles.card3}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Khóa ẩm')}>
               <div className={styles.cardIcon}>🔒</div>
               <h3>Khóa ẩm 3 lớp tối ưu</h3>
               <p>Giữ hạt luôn thơm ngon giòn rụm với ba tầng bảo vệ: Gioăng cao su nắp, hộp hút ẩm và cửa nhả hạt khép kín chống kiến.</p>
             </div>
-            <div className={`${styles.bentoCard} ${styles.card4}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Bánh răng chống kẹt')}>
+            <div className={`${styles.bentoCard} glass-card ${styles.card4}`} onClick={() => addLog('click', 'Xem chi tiết tính năng Bánh răng chống kẹt')}>
               <div className={styles.cardIcon}>⚙️</div>
               <h3>Bánh răng Silicon chống kẹt hạt</h3>
               <p>Hệ thống bánh răng Silicon mềm dẻo chia hạt đều đặn. Cảm biến thông minh tự động đảo chiều xoay nếu phát hiện vật cản kẹt hạt.</p>
@@ -284,14 +281,14 @@ export default function Home() {
               </ul>
               <div style={{ display: 'flex', gap: '0.5rem', marginTop: 'auto' }}>
                 <button 
-                  className={styles.secondaryBtn} 
+                  className="neon-button-secondary" 
                   style={{ flex: 1 }}
                   onClick={() => handleAddToCart({ id: 'std', name: 'PawsFeed Standard', price: 2290000 })}
                 >
                   Thêm vào giỏ
                 </button>
                 <button 
-                  className={styles.secondaryBtn}
+                  className="neon-button-secondary"
                   style={{ padding: '1rem', width: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   onClick={() => handleWishlistToggle({ id: 'std', name: 'PawsFeed Standard', price: 2290000 })}
                   title="Yêu thích"
@@ -320,15 +317,15 @@ export default function Home() {
               </ul>
               <div style={{ display: 'flex', gap: '0.5rem', marginTop: 'auto' }}>
                 <button 
-                  className={styles.primaryBtn} 
+                  className="neon-button-primary" 
                   style={{ flex: 1 }}
                   onClick={() => handleAddToCart({ id: 'pro', name: 'PawsFeed AI Pro', price: 2590000 })}
                 >
                   Thêm vào giỏ
                 </button>
                 <button 
-                  className={styles.secondaryBtn}
-                  style={{ padding: '1rem', width: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderColor: 'var(--accent-color)' }}
+                  className="neon-button-secondary"
+                  style={{ padding: '1rem', width: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderColor: 'var(--accent-primary)' }}
                   onClick={() => handleWishlistToggle({ id: 'pro', name: 'PawsFeed AI Pro', price: 2590000 })}
                   title="Yêu thích"
                 >
@@ -363,9 +360,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* FLOATING DEV CONSOLE */}
-      <DevConsole logs={logs} onClear={() => setLogs([])} />
 
       {/* FLOATING CHATBOT */}
       <Chatbot onLog={addLog} />

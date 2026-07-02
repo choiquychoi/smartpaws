@@ -1,17 +1,17 @@
 .main {
   width: 100%;
+  background-color: var(--bg-primary);
 }
 
-/* Common Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--space-lg);
 }
 
 .sectionTitle {
-  font-size: 2.25rem;
-  font-weight: 800;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-extrabold);
   text-align: center;
   margin-bottom: 0.75rem;
   color: var(--text-primary);
@@ -29,9 +29,9 @@
 
 /* Hero Section */
 .hero {
-  padding: 6rem 0 8rem;
-  background: radial-gradient(circle at 80% 20%, rgba(255, 90, 54, 0.05) 0%, transparent 50%),
-              radial-gradient(circle at 10% 80%, rgba(255, 90, 54, 0.03) 0%, transparent 50%);
+  padding: 8rem 0 10rem;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 90, 54, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 10% 80%, rgba(255, 90, 54, 0.04) 0%, transparent 60%);
 }
 
 .heroContainer {
@@ -42,66 +42,29 @@
 }
 
 .heroContent h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-extrabold);
   line-height: 1.15;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
 }
 
 .heroContent h1 span {
-  color: var(--accent-color);
+  color: var(--accent-primary);
+  text-shadow: 0 0 15px var(--accent-primary-glow);
 }
 
 .heroContent p {
   font-size: 1.15rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--space-xl);
 }
 
 .heroActions {
   display: flex;
-  gap: 1rem;
-}
-
-.primaryBtn {
-  background: var(--accent-color);
-  color: #ffffff;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 14px rgba(255, 90, 54, 0.3);
-}
-
-.primaryBtn:hover {
-  background: var(--accent-color-hover);
-  transform: translateY(-2px);
-}
-
-.secondaryBtn {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.2s ease;
-}
-
-.secondaryBtn:hover {
-  border-color: var(--accent-color);
-  background: transparent;
+  gap: var(--space-md);
 }
 
 .heroImageContainer {
@@ -112,16 +75,22 @@
 
 .heroImage {
   border-radius: 20px;
-  box-shadow: 0 20px 40px var(--shadow-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 90, 54, 0.05);
   width: 100%;
   max-width: 480px;
   height: auto;
   border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.heroImage:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 90, 54, 0.2);
 }
 
 /* Social Proof */
 .socialProof {
-  padding: 4rem 0;
+  padding: var(--space-xl) 0;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -133,17 +102,17 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  opacity: 0.6;
-  margin-bottom: 3rem;
+  opacity: 0.7;
+  margin-bottom: var(--space-xl);
 }
 
 .partner {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
   color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: var(--space-xs);
 }
 
 .metrics {
@@ -154,55 +123,46 @@
 }
 
 .metric h3 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--accent-color);
+  font-size: 2.75rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--accent-primary);
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--accent-primary-glow);
 }
 
 .metric p {
-  font-size: 1rem;
+  font-size: var(--fs-body);
   color: var(--text-secondary);
 }
 
 /* Bento Grid */
 .features {
-  padding: 8rem 0;
+  padding: var(--space-xxl) 0;
 }
 
 .bentoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 320px 320px;
-  gap: 1.5rem;
+  gap: var(--space-lg);
 }
 
 .bentoCard {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 2rem;
+  /* Compose global glass-card behavior */
+  cursor: pointer;
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  box-shadow: 0 4px 20px var(--shadow-color);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.bentoCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-color);
-  box-shadow: 0 10px 30px rgba(255, 90, 54, 0.08);
-}
-
 .bentoCard h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
   color: var(--text-primary);
   margin-bottom: 0.75rem;
-  position: relative;
   z-index: 2;
 }
 
@@ -210,114 +170,123 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  position: relative;
   z-index: 2;
 }
 
 .cardIcon {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   margin-bottom: auto;
+  z-index: 2;
+  transition: var(--transition-smooth);
 }
 
-.card1 {
-  grid-column: span 2;
+.bentoCard:hover .cardIcon {
+  transform: scale(1.1) rotate(5deg);
 }
 
-.card2 {
-  grid-column: span 1;
-}
+.card1 { grid-column: span 2; }
+.card2 { grid-column: span 1; }
+.card3 { grid-column: span 1; }
+.card4 { grid-column: span 2; }
 
-.card3 {
-  grid-column: span 1;
-}
-
-.card4 {
-  grid-column: span 2;
-}
-
-/* Interactive Specs Section */
+/* Specs Section wrapper */
 .specs {
-  padding: 8rem 0;
+  padding: var(--space-xxl) 0;
   background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Pricing Section */
 .pricing {
-  padding: 8rem 0;
+  padding: var(--space-xxl) 0;
 }
 
 .pricingGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
-  max-width: 900px;
+  max-width: 940px;
   margin: 0 auto;
 }
 
 .pricingCard {
-  background: var(--card-bg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 3rem 2rem;
+  padding: 3rem var(--space-xl);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px var(--shadow-color);
+  box-shadow: var(--shadow-premium);
   position: relative;
-  transition: border-color 0.2s ease;
+  transition: var(--transition-smooth);
+}
+
+.pricingCard:hover {
+  border-color: rgba(255, 90, 54, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 .popularCard {
-  border-color: var(--accent-color);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 32px var(--accent-primary-glow);
+}
+
+.popularCard:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 30px var(--accent-primary), 0 8px 32px var(--accent-primary-glow);
 }
 
 .popularTag {
   position: absolute;
   top: -15px;
-  right: 2rem;
-  background: var(--accent-color);
+  right: var(--space-xl);
+  background: var(--accent-primary);
   color: #ffffff;
-  padding: 0.25rem 1rem;
+  padding: 0.35rem 1.25rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
+  box-shadow: 0 0 10px var(--accent-primary-glow);
 }
 
 .pricingCard h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-xs);
 }
 
 .priceDescription {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  margin-bottom: var(--space-lg);
 }
 
 .priceBlock {
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--space-xl);
 }
 
 .originalPrice {
   text-decoration: line-through;
   color: var(--text-secondary);
   font-size: 1.1rem;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .currentPrice {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2.75rem;
+  font-weight: var(--fw-extrabold);
   color: var(--text-primary);
   margin-top: 0.25rem;
 }
 
 .pricingFeatures {
   list-style: none;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-xl);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 .pricingFeatures li {
@@ -325,52 +294,49 @@
   color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
 
 .pricingFeatures li::before {
   content: '✓';
-  color: var(--accent-color);
-  font-weight: 700;
+  color: var(--accent-primary);
+  font-weight: var(--fw-bold);
+  text-shadow: 0 0 5px var(--accent-primary-glow);
 }
 
-.pricingCard .primaryBtn {
-  width: 100%;
-  text-align: center;
-  margin-top: auto;
-}
-
-/* Timer */
+/* Countdown promo Timer */
 .timerContainer {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-xl);
 }
 
 .timerContainer p {
-  font-size: 1rem;
+  font-size: var(--fs-body);
   color: var(--text-secondary);
-  margin-bottom: 1rem;
-  font-weight: 600;
+  margin-bottom: var(--space-md);
+  font-weight: var(--fw-semibold);
 }
 
 .timer {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 .timerBlock {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: var(--space-md);
   border-radius: 8px;
-  min-width: 80px;
+  min-width: 85px;
+  box-shadow: var(--shadow-premium);
 }
 
 .timerVal {
   font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--accent-color);
+  font-weight: var(--fw-extrabold);
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-glow);
 }
 
 .timerLabel {
@@ -382,68 +348,67 @@
 
 /* FAQs */
 .faq {
-  padding: 8rem 0;
+  padding: var(--space-xxl) 0;
   background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Lead Form Section */
 .register {
-  padding: 8rem 0;
+  padding: var(--space-xxl) 0;
 }
 
 .registerCard {
-  background: var(--card-bg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  padding: 4rem 3rem;
-  max-width: 720px;
+  padding: var(--space-xxl) var(--space-xl);
+  max-width: 740px;
   margin: 0 auto;
-  box-shadow: 0 20px 40px var(--shadow-color);
+  box-shadow: var(--shadow-premium);
   text-align: center;
 }
 
 .registerCard h2 {
   font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
+  font-weight: var(--fw-extrabold);
+  margin-bottom: var(--space-md);
 }
 
 .registerCard p {
   color: var(--text-secondary);
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-xl);
 }
 
-/* Responsive */
+/* Responsive styling updates */
 @media (max-width: 992px) {
   .heroContainer {
     grid-template-columns: 1fr;
     gap: 3rem;
     text-align: center;
   }
-  
   .heroContent h1 {
     font-size: 2.75rem;
   }
-  
   .heroActions {
     justify-content: center;
   }
-  
   .bentoGrid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
-  
   .card1, .card4 {
     grid-column: span 1;
   }
-  
   .pricingGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
+/* Entrance animations transitions */
 .fadeSection {
   opacity: 0;
   transform: translateY(30px);
