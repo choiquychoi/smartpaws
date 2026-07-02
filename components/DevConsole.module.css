@@ -1,0 +1,157 @@
+.console {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 320px;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 90, 54, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+  color: #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.collapsed {
+  width: 260px;
+}
+
+.header {
+  padding: 0.75rem 1rem;
+  background: linear-gradient(90deg, #ff5a36 0%, #ff7e60 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.body {
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.clearBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  background: rgba(255, 90, 54, 0.2);
+  border-color: var(--accent-color);
+}
+
+.status {
+  font-size: 0.75rem;
+  color: #10b981;
+}
+
+.logList {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 0.25rem;
+}
+
+/* Custom Scrollbar for Dev Console */
+.logList::-webkit-scrollbar {
+  width: 4px;
+}
+.logList::-webkit-scrollbar-track {
+  background: transparent;
+}
+.logList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.logItem {
+  line-height: 1.4;
+  word-break: break-all;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 0.25rem;
+}
+
+.time {
+  color: #64748b;
+  margin-right: 0.5rem;
+}
+
+.type {
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.click {
+  color: #38bdf8;
+}
+
+.scroll {
+  color: #a855f7;
+}
+
+.validation {
+  color: #f59e0b;
+}
+
+.api_post {
+  color: #fb7185;
+}
+
+.api_success {
+  color: #4ade80;
+}
+
+.api_error {
+  color: #ef4444;
+}
+
+.default {
+  color: #94a3b8;
+}
+
+.message {
+  color: #f1f5f9;
+}
+
+.empty {
+  color: #64748b;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-style: italic;
+  line-height: 1.5;
+}
