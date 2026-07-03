@@ -159,6 +159,7 @@ export default function Home() {
                 height={350} 
                 className={styles.heroImage}
                 priority
+                sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
           </div>
@@ -176,15 +177,15 @@ export default function Home() {
           </div>
           <div className={styles.metrics}>
             <div className={styles.metric}>
-              <h3>5,000+</h3>
+              <div className={styles.metricValue}>5,000+</div>
               <p>Khách hàng tin dùng</p>
             </div>
             <div className={styles.metric}>
-              <h3>98%</h3>
+              <div className={styles.metricValue}>98%</div>
               <p>Khách hàng hài lòng</p>
             </div>
             <div className={styles.metric}>
-              <h3>4.9/5.0★</h3>
+              <div className={styles.metricValue}>4.9/5.0★</div>
               <p>Đánh giá chất lượng</p>
             </div>
           </div>

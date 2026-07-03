@@ -41,6 +41,7 @@ export default function SpecsTable() {
               src={activeVersion === 'pro' ? '/images/pawsfeed_pro.jpg' : '/images/pawsfeed_standard.jpg'} 
               alt={activeVersion === 'pro' ? 'Kibble Pro' : 'Kibble Standard'} 
               className={styles.feederImage}
+              loading="lazy"
             />
           </div>
           <div className={styles.cardInfo}>
