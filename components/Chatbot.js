@@ -16,7 +16,8 @@ export default function Chatbot({ onLog }) {
     if (isOpen && onLog) {
       onLog('click', 'Mở khung chat tư vấn Chatbot');
     }
-  }, [isOpen, onLog]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   useEffect(() => {
     // Scroll to bottom when messages list updates

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import SpecsTable from '@/components/SpecsTable';
 import Accordion from '@/components/Accordion';
@@ -26,9 +26,49 @@ export default function Home() {
     toggleWishlist 
   } = useApp();
 
-  const addLog = (type, message) => {
+  const [toasts, setToasts] = useState([]);
+
+  const addLog = useCallback((type, message) => {
     console.log(`[${type.toUpperCase()}] ${message}`);
-  };
+
+    // Map log types to rich icons and titles
+    let icon = 'ℹ️';
+    let title = 'Hành vi';
+    if (type === 'scroll') {
+      icon = '📜';
+      title = 'Cuộn trang';
+    } else if (type === 'click') {
+      icon = '🖱️';
+      title = 'Click chuột';
+    } else if (type === 'validation') {
+      icon = '⚠️';
+      title = 'Kiểm tra dữ liệu';
+    } else if (type === 'api_post') {
+      icon = '⏳';
+      title = 'Gửi Webhook';
+    } else if (type === 'api_success') {
+      icon = '✅';
+      title = 'Webhook thành công';
+    } else if (type === 'api_error') {
+      icon = '❌';
+      title = 'Webhook lỗi';
+    }
+
+    const newToast = {
+      id: Date.now() + Math.random(),
+      type,
+      title,
+      icon,
+      message
+    };
+
+    setToasts(prev => [...prev, newToast]);
+
+    // Auto dismiss after 3.5 seconds
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== newToast.id));
+    }, 3500);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -472,6 +512,24 @@ export default function Home() {
         onRemoveItem={removeFromCart}
         onLog={addLog}
       />
+      {/* FLOATING TOAST NOTIFICATIONS */}
+      <div className={styles.toastContainer}>
+        {toasts.map(toast => (
+          <div key={toast.id} className={`${styles.toast} ${styles[toast.type] || ''} glass-card`}>
+            <span className={styles.toastIcon}>{toast.icon}</span>
+            <div className={styles.toastBody}>
+              <div className={styles.toastTitle}>{toast.title}</div>
+              <div className={styles.toastMessage}>{toast.message}</div>
+            </div>
+            <button 
+              className={styles.toastClose} 
+              onClick={() => setToasts(prev => prev.filter(t => t.id !== toast.id))}
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
