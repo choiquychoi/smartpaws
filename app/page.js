@@ -31,6 +31,11 @@ export default function Home() {
   const addLog = useCallback((type, message) => {
     console.log(`[${type.toUpperCase()}] ${message}`);
 
+    // Track scroll & click silently in the DevConsole, do not show popup notifications to users
+    if (type === 'scroll' || type === 'click') {
+      return;
+    }
+
     // Map log types to rich icons and titles
     let icon = 'ℹ️';
     let title = 'Hành vi';

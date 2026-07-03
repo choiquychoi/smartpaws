@@ -12,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://smartpaws-wpw1.vercel.app"),
   title: "SmartPaws Kibble - Máy Cho Thú Cưng Ăn Thông Minh",
   description: "Giải pháp chăm sóc thú cưng tự động, khoa học với camera giám sát AI và cảm biến cân định lượng.",
   openGraph: {
@@ -19,6 +20,14 @@ export const metadata = {
     description: "Giải pháp chăm sóc thú cưng tự động, khoa học với camera giám sát AI và cảm biến cân định lượng.",
     type: "website",
     locale: "vi_VN",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SmartPaws Kibble Smart Pet Feeder Preview",
+      }
+    ],
   }
 };
 
