@@ -11,6 +11,15 @@ export default function Header() {
   const wishlistCount = wishlist.length;
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [bounceCart, setBounceCart] = useState(false);
+
+  useEffect(() => {
+    if (cartCount > 0) {
+      setBounceCart(true);
+      const timer = setTimeout(() => setBounceCart(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +49,7 @@ export default function Header() {
             ❤️ <span className={styles.badge}>{wishlistCount}</span>
           </button>
           <button className={styles.actionBtn} onClick={() => setIsCartOpen(true)} title="Giỏ hàng">
-            🛒 <span className={styles.badge}>{cartCount}</span>
+            🛒 <span className={`${styles.badge} ${bounceCart ? styles.bounce : ''}`}>{cartCount}</span>
           </button>
           <ThemeToggle />
         </div>
@@ -69,7 +78,7 @@ export default function Header() {
             ❤️ Yêu thích <span className={styles.mobileBadge}>{wishlistCount}</span>
           </button>
           <button className={styles.mobileActionBtn} onClick={() => { setIsMenuOpen(false); setIsCartOpen(true); }}>
-            🛒 Giỏ hàng <span className={styles.mobileBadge}>{cartCount}</span>
+            🛒 Giỏ hàng <span className={`${styles.mobileBadge} ${bounceCart ? styles.bounce : ''}`}>{cartCount}</span>
           </button>
           <div className={styles.mobileToggleWrapper}>
             <span>Giao diện:</span>

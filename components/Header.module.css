@@ -91,6 +91,17 @@
   box-shadow: 0 0 8px var(--accent-primary-glow);
 }
 
+@keyframes badgeBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.badge.bounce,
+.mobileBadge.bounce {
+  animation: badgeBounce 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .burgerBtn {
   display: none;
   background: transparent;

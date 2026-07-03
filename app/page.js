@@ -11,7 +11,10 @@ import styles from './page.module.css';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 });
-  
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollPercent, setScrollPercent] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+
   const { 
     cart, 
     wishlist, 
@@ -67,7 +70,7 @@ export default function Home() {
     };
   }, []);
 
-  // Scroll Behavior Tracking
+  // Combined High-Performance Scroll Event Listener (Parallax & Active Steps)
   useEffect(() => {
     const tracked = {
       hero: false,
@@ -79,6 +82,30 @@ export default function Home() {
     };
 
     const handleScroll = () => {
+      const sy = window.scrollY;
+      setScrollY(sy);
+
+      // 1. Scroll percentage calculation
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollPercent((sy / totalHeight) * 100);
+      }
+
+      // 2. Active timeline step calculation
+      const steps = document.querySelectorAll(`.${styles.timelineItem}`);
+      let currentStep = 0;
+      steps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        // Trigger active when item is in the central viewport sweep (top < 65% height, bottom > 15% height)
+        if (rect.top < window.innerHeight * 0.65 && rect.bottom > window.innerHeight * 0.15) {
+          currentStep = index + 1;
+        }
+      });
+      if (currentStep > 0) {
+        setActiveStep(currentStep);
+      }
+
+      // 3. Section log tracking
       const sections = ['hero', 'features', 'specs', 'pricing', 'faq', 'register'];
       sections.forEach(id => {
         const el = document.getElementById(id);
@@ -100,7 +127,8 @@ export default function Home() {
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Trigger once on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -137,6 +165,26 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      {/* SCROLL PROGRESS BAR */}
+      <div 
+        className={styles.scrollProgress} 
+        style={{ width: `${scrollPercent}%` }} 
+      />
+
+      {/* PARALLAX GLOW BLOBS */}
+      <div 
+        className={styles.parallaxBlob1} 
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }} 
+      />
+      <div 
+        className={styles.parallaxBlob2} 
+        style={{ transform: `translateY(${scrollY * -0.08}px)` }} 
+      />
+      <div 
+        className={styles.parallaxBlob3} 
+        style={{ transform: `translateY(${scrollY * 0.12}px)` }} 
+      />
+
       {/* 1. HERO SECTION (Attention) */}
       <section id="hero" className={`${styles.hero} ${styles.fadeSection}`}>
         <div className={styles.container}>
@@ -220,6 +268,56 @@ export default function Home() {
               <div className={styles.cardIcon}>⚙️</div>
               <h3>Bánh răng Silicon chống kẹt hạt</h3>
               <p>Hệ thống bánh răng Silicon mềm dẻo chia hạt đều đặn. Cảm biến thông minh tự động đảo chiều xoay nếu phát hiện vật cản kẹt hạt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 SCROLLYTELLING SECTION (A day with Kibble) */}
+      <section id="journey" className={styles.journey}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Một ngày hạnh phúc cùng Kibble</h2>
+          <p className={styles.sectionSubtitle}>
+            Hãy cùng xem cách Kibble đồng hành chăm sóc sức khỏe cho bé cưng của bạn suốt 24 giờ nhé!
+          </p>
+
+          <div className={styles.timeline}>
+            <div className={styles.timelineLine} />
+
+            <div className={`${styles.timelineItem} ${styles.left} ${activeStep === 1 ? styles.activeTimeline : ''}`}>
+              <div className={styles.timelineTime}>06:00</div>
+              <div className={`${styles.timelineContent} glass-card`}>
+                <span className={styles.timelineIcon}>🌅</span>
+                <h3>Bữa Sáng Tươi Ngon</h3>
+                <p>Kibble tự động nhả hạt đúng liều lượng đã thiết lập. Khay inox kháng khuẩn sạch sẽ giúp bé sẵn sàng cho ngày mới năng động.</p>
+              </div>
+            </div>
+
+            <div className={`${styles.timelineItem} ${styles.right} ${activeStep === 2 ? styles.activeTimeline : ''}`}>
+              <div className={styles.timelineTime}>12:00</div>
+              <div className={`${styles.timelineContent} glass-card`}>
+                <span className={styles.timelineIcon}>📷</span>
+                <h3>Ngắm Bé Ăn Trưa</h3>
+                <p>Bạn đang đi làm? Chỉ cần mở app SmartPaws, camera AI 1080p góc rộng sẽ stream trực tiếp hình ảnh bé ăn trưa giòn rụm cực đáng yêu.</p>
+              </div>
+            </div>
+
+            <div className={`${styles.timelineItem} ${styles.left} ${activeStep === 3 ? styles.activeTimeline : ''}`}>
+              <div className={styles.timelineTime}>18:00</div>
+              <div className={`${styles.timelineContent} glass-card`}>
+                <span className={styles.timelineIcon}>⚖️</span>
+                <h3>Kiểm Soát Cân Nặng</h3>
+                <p>Cảm biến cân hạt dưới khay đo lường lượng hạt thừa chính xác đến ±1g, tự động điều chỉnh lượng hạt bữa tối để chống béo phì.</p>
+              </div>
+            </div>
+
+            <div className={`${styles.timelineItem} ${styles.right} ${activeStep === 4 ? styles.activeTimeline : ''}`}>
+              <div className={styles.timelineTime}>22:00</div>
+              <div className={`${styles.timelineContent} glass-card`}>
+                <span className={styles.timelineIcon}>🌙</span>
+                <h3>Yên Tâm Ngủ Ngon</h3>
+                <p>Kích hoạt chế độ hồng ngoại ban đêm giúp bạn theo dõi hoạt động của bé trong bóng tối. Bánh răng silicon tự khóa ẩm giữ hạt luôn tươi.</p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,28 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
+
+function saveRegistrationToCSV(name, email, phone) {
+  const csvPath = path.join(process.cwd(), 'registrations.csv');
+  const headers = ['Thời gian', 'Họ tên', 'Email', 'Số điện thoại'];
+  const row = [
+    new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
+    `"${name.replace(/"/g, '""')}"`,
+    `"${email.replace(/"/g, '""')}"`,
+    `"${phone.replace(/"/g, '""')}"`
+  ].join(',');
+
+  try {
+    if (!fs.existsSync(csvPath)) {
+      // Add UTF-8 BOM so Excel opens it with correct Vietnamese diacritics
+      fs.writeFileSync(csvPath, '\ufeff' + headers.join(',') + '\n', 'utf8');
+    }
+    fs.appendFileSync(csvPath, row + '\n', 'utf8');
+    console.log(">>> [HỆ THỐNG] ĐÃ LƯU ĐĂNG KÝ VÀO FILE CSV:", csvPath);
+  } catch (err) {
+    console.error("Lỗi khi lưu đăng ký vào CSV:", err);
+  }
+}
 
 export async function POST(request) {
   try {
@@ -17,13 +41,16 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Số điện thoại phải chứa 10-11 chữ số' }, { status: 400 });
     }
 
+    // Save registration to local CSV database
+    saveRegistrationToCSV(name.trim(), email.trim(), phone.trim());
+
     const webhookUrl = process.env.SLACK_WEBHOOK_URL;
     if (!webhookUrl) {
       // Mock mode for evaluation if webhook url is empty in env
       console.log('SLACK_WEBHOOK_URL is not configured. Mocking success response.');
       return NextResponse.json({ 
         success: true, 
-        message: 'Đăng ký thành công! (Chế độ giả lập vì SLACK_WEBHOOK_URL chưa được cấu hình)' 
+        message: 'Đăng ký thành công! (Chế độ lưu CSV hoạt động, giả lập gửi Slack vì Webhook chưa cấu hình)' 
       });
     }
 

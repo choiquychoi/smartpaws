@@ -4,6 +4,7 @@ import styles from './SpecsTable.module.css';
 
 export default function SpecsTable() {
   const [activeVersion, setActiveVersion] = useState('pro'); // pro vs standard
+  const [loading, setLoading] = useState(false);
 
   const specs = [
     { name: 'Dung tích chứa', pro: '4.0 Lít (Khoảng 2.0 kg hạt)', standard: '3.0 Lít (Khoảng 1.5 kg hạt)', icon: '📦' },
@@ -16,18 +17,29 @@ export default function SpecsTable() {
     { name: 'Khay ăn', pro: 'Inox 304 kháng khuẩn cao cấp, tháo rời dễ rửa', standard: 'Nhựa kháng khuẩn hoặc Inox thường', icon: '🍽️' },
   ];
 
+  const handleVersionChange = (version) => {
+    if (version === activeVersion || loading) return;
+    setLoading(true);
+    setTimeout(() => {
+      setActiveVersion(version);
+      setLoading(false);
+    }, 450);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggleContainer}>
         <button 
           className={`${styles.toggleBtn} ${activeVersion === 'pro' ? styles.active : ''}`}
-          onClick={() => setActiveVersion('pro')}
+          onClick={() => handleVersionChange('pro')}
+          disabled={loading}
         >
           Kibble Pro (Khuyên dùng)
         </button>
         <button 
           className={`${styles.toggleBtn} ${activeVersion === 'standard' ? styles.active : ''}`}
-          onClick={() => setActiveVersion('standard')}
+          onClick={() => handleVersionChange('standard')}
+          disabled={loading}
         >
           Kibble Standard
         </button>
@@ -37,18 +49,31 @@ export default function SpecsTable() {
       <div className={styles.previewContainer}>
         <div className={`${styles.singleFeederCard} glass-card`}>
           <div className={styles.imageWrapper}>
-            <img 
-              src={activeVersion === 'pro' ? '/images/pawsfeed_pro.jpg' : '/images/pawsfeed_standard.jpg'} 
-              alt={activeVersion === 'pro' ? 'Kibble Pro' : 'Kibble Standard'} 
-              className={styles.feederImage}
-              loading="lazy"
-            />
+            {loading ? (
+              <div className={styles.skeletonImage} />
+            ) : (
+              <img 
+                src={activeVersion === 'pro' ? '/images/pawsfeed_pro.jpg' : '/images/pawsfeed_standard.jpg'} 
+                alt={activeVersion === 'pro' ? 'Kibble Pro' : 'Kibble Standard'} 
+                className={styles.feederImage}
+                loading="lazy"
+              />
+            )}
           </div>
           <div className={styles.cardInfo}>
-            <span className={`${styles.badgeLabel} ${activeVersion === 'standard' ? styles.badgeSecondaryLabel : ''}`}>
-              {activeVersion === 'pro' ? 'Pro - Cao Cấp' : 'Standard - Cơ Bản'}
-            </span>
-            <h3>{activeVersion === 'pro' ? 'SmartPaws Kibble Pro' : 'SmartPaws Kibble Standard'}</h3>
+            {loading ? (
+              <>
+                <div className={styles.skeletonBadge} />
+                <div className={styles.skeletonTitle} />
+              </>
+            ) : (
+              <>
+                <span className={`${styles.badgeLabel} ${activeVersion === 'standard' ? styles.badgeSecondaryLabel : ''}`}>
+                  {activeVersion === 'pro' ? 'Pro - Cao Cấp' : 'Standard - Cơ Bản'}
+                </span>
+                <h3>{activeVersion === 'pro' ? 'SmartPaws Kibble Pro' : 'SmartPaws Kibble Standard'}</h3>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -69,7 +94,11 @@ export default function SpecsTable() {
                   <span className={styles.icon}>{spec.icon}</span> {spec.name}
                 </td>
                 <td className={styles.specVal}>
-                  {activeVersion === 'pro' ? spec.pro : spec.standard}
+                  {loading ? (
+                    <div className={styles.skeletonLine} />
+                  ) : (
+                    activeVersion === 'pro' ? spec.pro : spec.standard
+                  )}
                 </td>
                 <td className={styles.specLegacy}>
                   {index === 0 ? '2.0 Lít - 3.0 Lít' : 
