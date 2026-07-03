@@ -29,7 +29,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems = [], onUpdateQu
         <div className={styles.body}>
           {cartItems.length === 0 ? (
             <div className={styles.empty}>
-              Giỏ hàng trống. Hãy thêm các gói PawsFeed AI vào giỏ để tiếp tục!
+              Giỏ hàng trống. Hãy thêm các gói Kibble vào giỏ để tiếp tục!
             </div>
           ) : (
             <div className={styles.itemList}>

@@ -28,7 +28,7 @@ export async function POST(request) {
     }
 
     const slackPayload = {
-      text: `🎉 *Đăng ký mới nhận ưu đãi PawsFeed AI!*\n👤 *Họ tên:* ${name.trim()}\n📧 *Email:* ${email.trim()}\n📞 *Điện thoại:* ${phone.trim()}\n⏰ *Thời gian:* ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}`
+      text: `🎉 *Đăng ký mới nhận ưu đãi Kibble!*\n👤 *Họ tên:* ${name.trim()}\n📧 *Email:* ${email.trim()}\n📞 *Điện thoại:* ${phone.trim()}\n⏰ *Thời gian:* ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}`
     };
 
     const res = await fetch(webhookUrl, {

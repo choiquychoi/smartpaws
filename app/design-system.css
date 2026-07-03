@@ -19,8 +19,10 @@
   color: #ffffff;
   border: none;
   border-radius: 30px;
+  padding: 0.95rem 2.4rem;
   font-family: var(--font-sans);
   font-weight: var(--fw-bold);
+  font-size: 1.05rem;
   box-shadow: 0 4px 14px 0 var(--accent-primary-glow);
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -40,8 +42,10 @@
   color: var(--text-primary);
   border: 1px solid var(--border-color);
   border-radius: 30px;
+  padding: 0.95rem 2.4rem;
   font-family: var(--font-sans);
   font-weight: var(--fw-semibold);
+  font-size: 1.05rem;
   cursor: pointer;
   transition: var(--transition-smooth);
   display: inline-flex;

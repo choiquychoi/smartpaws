@@ -95,3 +95,82 @@
   color: var(--text-secondary);
   font-style: italic;
 }
+
+.previewContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.singleFeederCard {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.singleFeederCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 90, 54, 0.2);
+  box-shadow: var(--shadow-premium), var(--shadow-neon-glow);
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+  background: #040711;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feederImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.singleFeederCard:hover .feederImage {
+  transform: scale(1.05);
+}
+
+.cardInfo {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.badgeLabel {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  color: var(--accent-primary);
+  background: var(--accent-primary-glow);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badgeLegacy {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.badgeSecondaryLabel {
+  color: var(--accent-secondary);
+  background: rgba(255, 174, 25, 0.15);
+}
+
+.cardInfo h3 {
+  font-size: 1.1rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}

@@ -5,7 +5,7 @@ import styles from './Chatbot.module.css';
 export default function Chatbot({ onLog }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'model', content: 'Xin chào! Tôi là trợ lý ảo SmartPaws. Tôi có thể giúp gì cho bạn về máy cho ăn PawsFeed AI?' }
+    { role: 'model', content: 'Xin chào! Tôi là trợ lý ảo SmartPaws. Tôi có thể giúp gì cho bạn về máy cho ăn Kibble?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);

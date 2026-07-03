@@ -11,7 +11,7 @@
   --border-color: rgba(255, 255, 255, 0.08);
 
   /* Typography Heights & Hierarchy */
-  --font-sans: var(--font-outfit), -apple-system, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, sans-serif;
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;

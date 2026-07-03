@@ -119,7 +119,7 @@ export default function Home() {
   const faqItems = [
     { 
       question: "Mất mạng Wi-Fi hoặc mất điện thì máy có hoạt động không?", 
-      answer: "PawsFeed AI được trang bị chip nhớ lưu lịch trình cho ăn tại chỗ và khoang chứa pin dự phòng (4 pin D). Khi mất Wi-Fi hay mất điện, thiết bị vẫn tự động nhả hạt chính xác theo đúng khung giờ đã thiết lập, bảo vệ sức khỏe của thú cưng." 
+      answer: "Kibble được trang bị chip nhớ lưu lịch trình cho ăn tại chỗ và khoang chứa pin dự phòng (4 pin D). Khi mất Wi-Fi hay mất điện, thiết bị vẫn tự động nhả hạt chính xác theo đúng khung giờ đã thiết lập, bảo vệ sức khỏe của thú cưng." 
     },
     { 
       question: "Máy có dễ dàng vệ sinh không?", 
@@ -142,7 +142,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.heroContainer}>
             <div className={styles.heroContent}>
-              <h1>SmartPaws <span>PawsFeed AI</span></h1>
+              <h1>SmartPaws <span>Kibble</span></h1>
               <p>
                 Trợ lý dinh dưỡng thông minh 24/7 cho thú cưng của bạn. Tự động hóa bữa ăn chuẩn khoa học, giám sát từ xa qua camera AI 1080p và bảo vệ hạt luôn tươi ngon giòn rụm.
               </p>
@@ -154,7 +154,7 @@ export default function Home() {
             <div className={styles.heroImageContainer}>
               <Image 
                 src="/images/smart_feeder_hero.jpg" 
-                alt="SmartPaws PawsFeed AI Pro" 
+                alt="SmartPaws Kibble Pro" 
                 width={500} 
                 height={350} 
                 className={styles.heroImage}
@@ -196,7 +196,7 @@ export default function Home() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Giải pháp dinh dưỡng thời đại công nghệ</h2>
           <p className={styles.sectionSubtitle}>
-            Không chỉ là máy cho ăn tự động, PawsFeed AI mang đến công nghệ chăm sóc toàn diện chuẩn y khoa.
+            Không chỉ là máy cho ăn tự động, Kibble mang đến công nghệ chăm sóc toàn diện chuẩn y khoa.
           </p>
 
           <div className={styles.bentoGrid}>
@@ -266,7 +266,7 @@ export default function Home() {
           <div className={styles.pricingGrid}>
             {/* Standard Plan */}
             <div className={styles.pricingCard}>
-              <h3>PawsFeed Standard</h3>
+              <h3>Kibble Standard</h3>
               <p className={styles.priceDescription}>Dành cho nhu cầu cơ bản, hẹn giờ cho ăn tự động qua điện thoại.</p>
               <div className={styles.priceBlock}>
                 <span className={styles.originalPrice}>3.490.000 đ</span>
@@ -283,14 +283,14 @@ export default function Home() {
                 <button 
                   className="neon-button-secondary" 
                   style={{ flex: 1 }}
-                  onClick={() => handleAddToCart({ id: 'std', name: 'PawsFeed Standard', price: 2290000 })}
+                  onClick={() => handleAddToCart({ id: 'std', name: 'Kibble Standard', price: 2290000 })}
                 >
                   Thêm vào giỏ
                 </button>
                 <button 
                   className="neon-button-secondary"
                   style={{ padding: '1rem', width: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  onClick={() => handleWishlistToggle({ id: 'std', name: 'PawsFeed Standard', price: 2290000 })}
+                  onClick={() => handleWishlistToggle({ id: 'std', name: 'Kibble Standard', price: 2290000 })}
                   title="Yêu thích"
                 >
                   {wishlist.some(item => item.id === 'std') ? '❤️' : '🤍'}
@@ -301,7 +301,7 @@ export default function Home() {
             {/* AI Pro Plan */}
             <div className={`${styles.pricingCard} ${styles.popularCard}`}>
               <div className={styles.popularTag}>BÁN CHẠY NHẤT</div>
-              <h3>PawsFeed AI Pro</h3>
+              <h3>Kibble Pro</h3>
               <p className={styles.priceDescription}>Tích hợp Camera AI giám sát và cân định lượng sức khỏe đỉnh cao.</p>
               <div className={styles.priceBlock}>
                 <span className={styles.originalPrice}>4.290.000 đ</span>
@@ -319,14 +319,14 @@ export default function Home() {
                 <button 
                   className="neon-button-primary" 
                   style={{ flex: 1 }}
-                  onClick={() => handleAddToCart({ id: 'pro', name: 'PawsFeed AI Pro', price: 2590000 })}
+                  onClick={() => handleAddToCart({ id: 'pro', name: 'Kibble Pro', price: 2590000 })}
                 >
                   Thêm vào giỏ
                 </button>
                 <button 
                   className="neon-button-secondary"
                   style={{ padding: '1rem', width: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderColor: 'var(--accent-primary)' }}
-                  onClick={() => handleWishlistToggle({ id: 'pro', name: 'PawsFeed AI Pro', price: 2590000 })}
+                  onClick={() => handleWishlistToggle({ id: 'pro', name: 'Kibble Pro', price: 2590000 })}
                   title="Yêu thích"
                 >
                   {wishlist.some(item => item.id === 'pro') ? '❤️' : '🤍'}

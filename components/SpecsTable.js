@@ -23,14 +23,33 @@ export default function SpecsTable() {
           className={`${styles.toggleBtn} ${activeVersion === 'pro' ? styles.active : ''}`}
           onClick={() => setActiveVersion('pro')}
         >
-          PawsFeed AI Pro (Khuyên dùng)
+          Kibble Pro (Khuyên dùng)
         </button>
         <button 
           className={`${styles.toggleBtn} ${activeVersion === 'standard' ? styles.active : ''}`}
           onClick={() => setActiveVersion('standard')}
         >
-          PawsFeed Standard
+          Kibble Standard
         </button>
+      </div>
+
+      {/* DYNAMIC PRODUCT PREVIEW CARD */}
+      <div className={styles.previewContainer}>
+        <div className={`${styles.singleFeederCard} glass-card`}>
+          <div className={styles.imageWrapper}>
+            <img 
+              src={activeVersion === 'pro' ? '/images/pawsfeed_pro.jpg' : '/images/pawsfeed_standard.jpg'} 
+              alt={activeVersion === 'pro' ? 'Kibble Pro' : 'Kibble Standard'} 
+              className={styles.feederImage}
+            />
+          </div>
+          <div className={styles.cardInfo}>
+            <span className={`${styles.badgeLabel} ${activeVersion === 'standard' ? styles.badgeSecondaryLabel : ''}`}>
+              {activeVersion === 'pro' ? 'Pro - Cao Cấp' : 'Standard - Cơ Bản'}
+            </span>
+            <h3>{activeVersion === 'pro' ? 'SmartPaws Kibble Pro' : 'SmartPaws Kibble Standard'}</h3>
+          </div>
+        </div>
       </div>
 
       <div className={styles.tableContainer}>
@@ -38,7 +57,7 @@ export default function SpecsTable() {
           <thead>
             <tr>
               <th>Thông số kỹ thuật</th>
-              <th>Giá trị ({activeVersion === 'pro' ? 'Bản AI Pro' : 'Bản Standard'})</th>
+              <th>Giá trị ({activeVersion === 'pro' ? 'Bản Pro' : 'Bản Standard'})</th>
               <th>Máy cho ăn truyền thống</th>
             </tr>
           </thead>
