@@ -31,8 +31,15 @@ export default function Home() {
   const addLog = useCallback((type, message) => {
     console.log(`[${type.toUpperCase()}] ${message}`);
 
-    // Track scroll & click silently in the DevConsole, do not show popup notifications to users
-    if (type === 'scroll' || type === 'click') {
+    // Track scroll, click, and chatbot activities silently, do not show popup notifications
+    if (
+      type === 'scroll' || 
+      type === 'click' || 
+      message.toLowerCase().includes('gemini') || 
+      message.toLowerCase().includes('chatbot') || 
+      message.toLowerCase().includes('tin nhắn') || 
+      message.toLowerCase().includes('khung chat')
+    ) {
       return;
     }
 
